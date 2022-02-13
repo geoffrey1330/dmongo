@@ -1,0 +1,13 @@
+from dmongo.dmongo import mongoQuery
+from bson.objectid import ObjectId
+
+
+def test_dmongo():
+    isprocessed = mongoQuery(MONGO_URI="localhost:27017",
+                             Database="vidly", collections="movies")
+
+    assert isprocessed.getAll() == [{'_id': ObjectId('5ff0602f6a7fc61174a3b045'), 'title': 'Airplane', 'numberInStock': 5, 'dailyRentalRate': 2, 'genre': {'_id': ObjectId('5ff0602f6a7fc61174a3b044'), 'name': 'Comedy'}, '__v': 0}, {'_id': ObjectId('5ff0602f6a7fc61174a3b046'), 'title': 'The Hangover', 'numberInStock': 10, 'dailyRentalRate': 2, 'genre': {'_id': ObjectId('5ff0602f6a7fc61174a3b044'), 'name': 'Comedy'}, '__v': 0}, {'_id': ObjectId('5ff0602f6a7fc61174a3b047'), 'title': 'Wedding Crashers', 'numberInStock': 15, 'dailyRentalRate': 2, 'genre': {'_id': ObjectId('5ff0602f6a7fc61174a3b044'), 'name': 'Comedy'}, '__v': 0}, {'_id': ObjectId('5ff060306a7fc61174a3b049'), 'title': 'Die Hard', 'numberInStock': 5, 'dailyRentalRate': 2, 'genre': {'_id': ObjectId('5ff060306a7fc61174a3b048'), 'name': 'Action'}, '__v': 0}, {'_id': ObjectId('5ff060306a7fc61174a3b04a'), 'title': 'Terminator', 'numberInStock': 10, 'dailyRentalRate': 2, 'genre': {'_id': ObjectId('5ff060306a7fc61174a3b048'), 'name': 'Action'}, '__v': 0}, {'_id': ObjectId('5ff060306a7fc61174a3b04b'), 'title': 'The Avengers', 'numberInStock': 15, 'dailyRentalRate': 2, 'genre': {
+        '_id': ObjectId('5ff060306a7fc61174a3b048'), 'name': 'Action'}, '__v': 0}, {'_id': ObjectId('5ff060306a7fc61174a3b04d'), 'title': 'The Notebook', 'numberInStock': 5, 'dailyRentalRate': 2, 'genre': {'_id': ObjectId('5ff060306a7fc61174a3b04c'), 'name': 'Romance'}, '__v': 0}, {'_id': ObjectId('5ff060306a7fc61174a3b04e'), 'title': 'When Harry Met Sally', 'numberInStock': 10, 'dailyRentalRate': 2, 'genre': {'_id': ObjectId('5ff060306a7fc61174a3b04c'), 'name': 'Romance'}, '__v': 0}, {'_id': ObjectId('5ff060306a7fc61174a3b04f'), 'title': 'Pretty Woman', 'numberInStock': 15, 'dailyRentalRate': 2, 'genre': {'_id': ObjectId('5ff060306a7fc61174a3b04c'), 'name': 'Romance'}, '__v': 0}, {'_id': ObjectId('5ff060306a7fc61174a3b051'), 'title': 'The Sixth Sense', 'numberInStock': 5, 'dailyRentalRate': 2, 'genre': {'_id': ObjectId('5ff060306a7fc61174a3b050'), 'name': 'Thriller'}, '__v': 0}, {'_id': ObjectId('5ff060306a7fc61174a3b052'), 'title': 'Gone Girl', 'numberInStock': 10, 'dailyRentalRate': 2, 'genre': {'_id': ObjectId('5ff060306a7fc61174a3b050'), 'name': 'Thriller'}, '__v': 0}]
+
+    assert isprocessed.getOne('5ff060306a7fc61174a3b052') == {'_id': ObjectId('5ff060306a7fc61174a3b052'), 'title': 'Gone Girl', 'numberInStock': 10, 'dailyRentalRate': 2, 'genre': {
+        '_id': ObjectId('5ff060306a7fc61174a3b050'), 'name': 'Thriller'}, '__v': 0}
